@@ -1,0 +1,11 @@
+{
+  "name": "clash-custom-rules",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:JasinYip/clash-custom-rules.git",
+  "author": "Jasin Yip <yejunxing@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "yaml": "^1.10.2"
+  }
+}
