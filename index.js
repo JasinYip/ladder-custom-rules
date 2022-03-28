@@ -18,9 +18,10 @@ function setNodes(nodes) {
 
 function parseNodes(content) {
   const splited = content.split('\n').slice(1).map(s => s.trim());
+
   return splited.map(s => ({
     src: s,
-    nodeId: s.slice(0, s.indexOf('|')).trim()
+    nodeId: s.slice(0, s.indexOf('=')).trim()
   }))
 }
 
@@ -31,7 +32,7 @@ function getCheckedNodes() {
 }
 
 function refreshSelected() {
-  const str = getCheckedNodes().join(' | ');
+  const str = getCheckedNodes().join(',');
   selectedNodeStrElem.value = str;
 }
 
