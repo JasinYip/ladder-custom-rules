@@ -8,7 +8,6 @@ function encode(str) {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
-    ' ': '&nbsp;',
   }
 
   let rst = '';
@@ -34,7 +33,7 @@ function setNodes(nodes) {
 
 function parseNodes(content) {
   const splited = content.split('\n')
-                    .filter(s => !s.includes('靠前节点较为拥挤'))
+                    .filter(s => !s.includes('⚠️'))
                     .map(s => s.trim());
 
   return splited.map(s => ({
