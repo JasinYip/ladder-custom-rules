@@ -1,3 +1,5 @@
+const axios = window.axios;
+
 let lastNodesContent = '';
 let nodeSelectorContainerElem = document.getElementById('node-selector-container')
 let selectedNodeStrElem = document.getElementById('selected-node-str')
@@ -99,7 +101,33 @@ async function pasteNodesStr() {
   document.getElementById('load').click();
 }
 
+async function loadUrl() {
+  setLoading(true);
+  axios.get('https://ladder-om-rules-test-ulfmfzhkav.cn-hangzhou.fcapp.run/')
+  .then(res => {
+    document.getElementById('nodes-content').value = res.data;
+    document.getElementById('load').click();
+  })
+  .catch(err => alert('加载订阅失败'))
+  .finally(() => setLoading(false))
+}
+
+function setLoading(loading) {
+  const loadBtn = document.getElementById('load-url');
+  const inputArea = document.getElementById('nodes-content');
+  if (loading) {
+    loadBtn.setAttribute('disabled', true);
+    inputArea.setAttribute('disabled', true);
+  }
+  else {
+    loadBtn.removeAttribute('disabled');
+    inputArea.removeAttribute('disabled');
+  }
+
+}
+
 function initEvents() {
+  document.getElementById('load-url').addEventListener('click', loadUrl);
   document.getElementById('load').addEventListener('click', onNodesContentChanged)
   document.getElementById('copy-selected').addEventListener('click', copySelected)
   document.getElementById('check-all').addEventListener('click', checkAll(true))
