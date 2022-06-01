@@ -34,7 +34,7 @@ function setNodes(nodes) {
 }
 
 function parseNodes(content) {
-  const splited = content.split('\n')
+  const splited = content.trim().split('\n')
                     .filter(s => !s.includes('⚠️'))
                     .map(s => s.trim());
 
